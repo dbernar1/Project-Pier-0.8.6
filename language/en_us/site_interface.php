@@ -21,7 +21,7 @@
     'my account' => 'My account',
     'my settings' => 'My settings',
     
-    'my projects' => 'My projects',
+    'my projects' => 'Projects',
     'my projects archive desc' => 'List of finished (archived) projects. All actions for these projects are locked, but you can still browse them.',
     
     'company online' => 'Company online',

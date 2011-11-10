@@ -23,9 +23,8 @@
     <?php } // if ?>
 
 <?php if((!is_null(active_project())) && isset($_userbox_projects) && is_array($_userbox_projects) && count($_userbox_projects)) { ?>
-    <li><a href="<?php echo get_url('dashboard', 'my_tasks') ?>"><?php echo lang('my tasks') ?></a>
+    <li><a href="<?php echo get_url('dashboard', 'my_tasks') ?>"><?php echo active_project()->getName() ?> Project</a>
       <ul>
-        <li><span><?php echo clean(active_project()->getName()) ?>:</span></li>
         <li><a href="<?php echo get_url('project', 'overview') ?>"><?php echo lang('overview') ?></a></li>
         <li class="header"><a href="<?php echo get_url('message', 'index') ?>"><?php echo lang('messages') ?></a></li>
 <?php if (ProjectMessage::canAdd(logged_user(), active_project())) { ?>
@@ -72,7 +71,7 @@
     </li>
     <?php } // if ?>
 
-    <li class="user"><a href="<?php echo logged_user()->getAccountUrl() ?>"><?php echo lang('view') . ' ' . clean($_userbox_user->getDisplayName()) ?></a>
+    <li class="user"><a href="<?php echo logged_user()->getAccountUrl() ?>"><?php echo clean($_userbox_user->getDisplayName()) ?></a>
       <ul>
         <li><span><?php echo lang('account') ?>:</span></li>
 <?php  if (logged_user()->canUpdateProfile(logged_user())) { ?>
@@ -86,6 +85,7 @@
         <li><span><?php echo lang('more') ?>:</span></li>
         <li><a href="<?php echo get_url('dashboard', 'my_projects') ?>"><?php echo lang('my projects') ?></a></li>
         <li><a href="<?php echo get_url('dashboard', 'my_tasks') ?>"><?php echo lang('my tasks') ?></a></li>
+        <li><a id="logout" class="js-confirm" href="<?php echo get_url('access', 'logout') ?>" title="<?php echo lang('confirm logout') ?>"><?php echo lang('logout') ?></a></li>
 <?php
   // PLUGIN HOOK
   plugin_manager()->do_action('my_account_dropdown');
@@ -94,7 +94,6 @@
       </ul>
     </li>
 
-    <li><a id="logout" class="js-confirm" href="<?php echo get_url('access', 'logout') ?>" title="<?php echo lang('confirm logout') ?>"><?php echo lang('logout') ?></a></li>
   </ul>
 </div>
 <?php trace(__FILE__,'end'); ?>
